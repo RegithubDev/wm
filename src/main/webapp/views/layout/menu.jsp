@@ -31,7 +31,7 @@ div.main-menu-content {
 					data-i18n="Masters">Masters</span></a>
 				<ul class="dropdown-menu" data-bs-popper="none">
 					<li class="" data-menu id="mastersChildZone" onClick="exFunction('mastersChildZone')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Zone.aspx" data-bs-toggle="" data-i18n="Zone">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Zone" data-bs-toggle="" data-i18n="Zone">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -39,7 +39,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildCluster" onClick="exFunction('mastersChildCluster')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Cluster.aspx" data-bs-toggle="" data-i18n="Circle/Unit/Cluster">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Cluster" data-bs-toggle="" data-i18n="Circle/Unit/Cluster">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -47,7 +47,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildWard" onClick="exFunction('mastersChildWard')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Ward.aspx" data-bs-toggle="" data-i18n="Ward">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Ward" data-bs-toggle="" data-i18n="Ward">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -55,7 +55,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildGarbageLocation" onClick="exFunction('mastersChildGarbageLocation')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Location.aspx" data-bs-toggle="" data-i18n="Garbage Location">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Location" data-bs-toggle="" data-i18n="Garbage Location">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -63,7 +63,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildGarbageType" onClick="exFunction('mastersChildGarbageType')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Garbagetype.aspx" data-bs-toggle="" data-i18n="Garbage Type">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/Garbagetype" data-bs-toggle="" data-i18n="Garbage Type">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -71,7 +71,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildComplaintType" onClick="exFunction('mastersChildComplaintType')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/ComplaintType.aspx" data-bs-toggle="" data-i18n="Complaint Type">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/ComplaintType" data-bs-toggle="" data-i18n="Complaint Type">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
@@ -79,7 +79,7 @@ div.main-menu-content {
         </a>
     </li>
     <li class="" data-menu id="mastersChildUserRegistration" onClick="exFunction('mastersChildUserRegistration')">
-        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/UserRegistration.aspx" data-bs-toggle="" data-i18n="User Registration">
+        <a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/Masters/UserRegistration" data-bs-toggle="" data-i18n="User Registration">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-circle">
                 <circle cx="12" cy="12" r="10"></circle>
             </svg>
