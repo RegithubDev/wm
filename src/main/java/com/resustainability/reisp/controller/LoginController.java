@@ -110,6 +110,8 @@ public class LoginController {
 		}
 		return model;
 	}
+	
+
 	@RequestMapping(value = "/irm-add-c", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView AddC(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView(PageConstants.cAdd);
@@ -705,4 +707,16 @@ public class LoginController {
         return style;
 	}
 	
+	@RequestMapping(value = "/Masters/Zone", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersZone(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.zone);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 }

@@ -38,5 +38,5 @@ public class PageConstants {
 	public static final String bbdashboard = "bbdashboard";
 
 	public static final String bbsubmitform = "bbsubmitform";
-	
+	public static final String zone = "zone";   
 }
