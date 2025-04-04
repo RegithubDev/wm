@@ -455,8 +455,7 @@ body {
 												<th scope="col">Complaint Address</th>
 												<th scope="col">Complaint Closed Date &amp; Time</th>
 												<th scope="col">History</th>
-												<!-- <th scope="col">Update</th>
-												<th scope="col">Delete</th> -->
+												 <th scope="col">Update</th>
 												<!-- <th scope="col">Send SMS</th> -->
 											</tr>
 										</thead>
@@ -585,6 +584,13 @@ body {
 		    <input type="hidden" name="complaintId"
 			id="complaintId2" /> 
 	</form>
+	<form action="<%=request.getContextPath()%>/compliant-get"
+		 id="ch1"
+		target="_blank" method="post">
+		    <input type="hidden" name="complaintIdGet"
+			id="complaintIdGet" /> 
+	</form>
+
 	
 	<script>
 
@@ -866,8 +872,12 @@ body {
 		    		            	var user_data = "'"+data.complaintId+"'";
 				                    var actions = '<a href="javascript:void(0);"  onclick="getHistory('+user_data+');"  title="Edit"><img  src="/reirm/resources/images/logo/CompHistory.gif" align="absmiddle" style="border-width:0px;"></a>';    	                   	
 		    		            	return actions;
+		    		            } },
+			            	 { "mData": function(data,type,row){
+		    		            	var user_data = "'"+data.complaintId+"'";
+				                    var actions = '<a href="javascript:void(0);"  onclick="getR('+user_data+');"  title="Edit"><img  src="/reirm/resources/images/logo/update_button.png" align="absmiddle" style="border-width:0px;"></a>';    	                   	
+		    		            	return actions;
 		    		            } }
-													            	
     		        ]
     		    });
     	
@@ -878,6 +888,11 @@ body {
 		function getHistory(data){
 			$('#complaintId2').val(data)
 			$("#ch").submit();
+		}
+		
+		function getR(data){
+			$('#complaintIdGet').val(data)
+			$("#ch1").submit();
 		}
 
 		function getErrorMessage(jqXHR, exception) {

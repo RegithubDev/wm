@@ -698,7 +698,7 @@ CSS Pretty Print
     		</div>
     		<div class="col s12 m6 center-align offset-m1">
     			<div class="cont">
-    				<h6>The Page You Requested Has Not Found Or Doesn't Exist. Click The Below Button To Go Back To Home</h6>
+    				<h6>This Page is in under Development!!</h6>
     				<div class="card-action">
 	                    <a href="<%=request.getContextPath()%>/" class="btn waves-effect waves-light bg-s t-c">Go to Home</a>
 	                </div>

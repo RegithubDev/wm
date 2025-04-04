@@ -31,11 +31,19 @@ public class User {
 		      remarks, clusterId ,from_date ,to_date,complaintTypeCode,complaintTypeName,complaintStatusCode,complaintStatusName,registrationTypeId
 		      ,registrationTypeCode
 		      ,registrationTypeName,binNumbers
-		      ,registrationTypeDesc,zoneName,wardName,locationName,clusterName
+		      ,registrationTypeDesc,zoneName,wardName,locationName,clusterName,complaintIdGet
 
 		      
 ;
 	
+	public String getComplaintIdGet() {
+		return complaintIdGet;
+	}
+
+	public void setComplaintIdGet(String complaintIdGet) {
+		this.complaintIdGet = complaintIdGet;
+	}
+
 	public String getTime_difference() {
 		return time_difference;
 	}

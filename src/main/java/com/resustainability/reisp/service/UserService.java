@@ -186,5 +186,13 @@ public class UserService {
 	public List<User> getCHistory(User user) throws Exception {
 		return dao.getCHistory(user);
 	}
+
+	public User getCDocumentDEtails(User user)  throws Exception {
+		return dao.getCDocumentDEtails(user);
+	}
+
+	public boolean CUpdate(User obj)throws Exception {
+		return dao.CUpdate(obj);
+	}
 	
 }

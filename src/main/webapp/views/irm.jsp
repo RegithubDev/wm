@@ -420,21 +420,43 @@ span.required {
 <section id="multiple-column-form">
    <div class="form-container">
         <h2 class="mb-4">Complaint Registration</h2>
- <form id="complaintForm"  action="<%=request.getContextPath() %>/c-submit"  novalidate>
-
-            <div class="form-group">
+ 
+ 				 <c:if test="${add eq 'add' }">
+               		<form id="complaintForm"  action="<%=request.getContextPath() %>/c-submit"  novalidate>
+                </c:if>
+               
+                <c:if test="${edit eq 'edit' }">
+               		<form id="complaintForm"  action="<%=request.getContextPath() %>/c-update"  novalidate>
+                </c:if>
+		<c:if test="${add eq 'add' }">
+		   <div class="form-group">
             <label class="form-label" for="fp-default">Registration From Date </label> 
             <input type="text" id="fp-date-time" class="form-control flatpickr-date-time flatpickr-input" name="transactionDate" placeholder="YYYY-MM-DD HH:MM" readonly="readonly">
                
                 <small class="error">.</small>
             </div>
+            
+            
+		</c:if>
+         
+         	<c:if test="${edit eq 'edit' }">
+		   <div class="form-group">
+            <label class="form-label" for="fp-default">Registration From Date </label> 
+            <input type="text" id="fp-date" class="form-control flatpickr-date-time flatpickr-input" name="transactionDate" placeholder="YYYY-MM-DD HH:MM" readonly="readonly"
+             value ="${cDetails.transactionDate }">
+               
+                <small class="error">.</small>
+            </div>
+             <input type="hidden" id="complaintId" name="complaintId" required  value ="${cDetails.complaintId }">
+		</c:if>
+         
 
             <div class="form-group">
-                <label for="regType">Registration Type <span class="required">*</span></label>
+                <label for="regType">Registration Type ${cDetails.registrationTypeId}w<span class="required">*</span></label>
                 <select  class="select2 form-select "id="regType" required name="registrtionTypeId">
                     <option value="">--Select Registration Type--</option>
                      <c:forEach var="obj" items="${regType}">
-				          <option value="${obj.registrationTypeId }">${obj.registrationTypeName }</option>
+				          <option value="${obj.registrationTypeId }" <c:if test="${cDetails.registrationTypeId eq obj.registrationTypeId }"> selected</c:if>>${obj.registrationTypeName }</option>
 					 </c:forEach>
                 </select>
                 <small class="error">.</small>
@@ -442,18 +464,18 @@ span.required {
 
             <div class="form-group">
                 <label for="citizenName">Citizen Name <span class="required">*</span></label>
-                <input type="text" id="citizenName" name="citizenName" required>
+                <input type="text" id="citizenName" name="citizenName" required  value ="${cDetails.citizenName }">
                 <small class="error">.</small>
             </div>
 
             <div class="form-group">
                 <label for="email">Citizen Email Id</label>
-                <input type="email" id="email" name="citizenEmailId">
+                <input type="email" id="email" name="citizenEmailId"  value ="${cDetails.citizenEmailId }">
             </div>
 
             <div class="form-group">
                 <label for="contact">Contact Number <span class="required">*</span></label>
-                <input type="number" id="contact" name="mobileNo" required oninput="validateNumber(this)">
+                <input type="number" id="contact" name="mobileNo" required oninput="validateNumber(this)"  value ="${cDetails.mobileNo }">
                 <small class="error">.</small>
             </div>
 
@@ -462,7 +484,7 @@ span.required {
                 <select  class="select2 form-select "id="complaintType" name="complaintTypeId" required>
                     <option value="">--Select Complaint Type--</option>
                      <c:forEach var="obj" items="${comType}">
-				        <option value="${obj.complaintTypeId}">${obj.complaintTypeName }</option>
+				        <option value="${obj.complaintTypeId}" <c:if test="${cDetails.complaintTypeId eq obj.complaintTypeId }"> selected</c:if>>${obj.complaintTypeName }</option>
 				    </c:forEach>
                 </select>
                 <small class="error">.</small>
@@ -488,7 +510,7 @@ span.required {
 			       <select  class="select2 form-select "id="location" name="locationId" required onchange="wardfilter(this.value);">
                     <option value="">--Select Location--</option>
                     <c:forEach var="obj" items="${locType}">
-					        <option value="${obj.locationId}">${obj.locationName}</option>
+					        <option value="${obj.locationId}" <c:if test="${cDetails.locationId eq obj.locationId }"> selected</c:if>>${obj.locationId} ${obj.locationName}</option>
 					    </c:forEach>
                 </select>
 			    <small class="error">.</small>
@@ -499,7 +521,7 @@ span.required {
                 <select  class="select2 form-select "id="ward" name="wardId" required onchange="wardfilter(this.value);">
                     <option value="">--Select Ward--</option>
                     <c:forEach var="obj" items="${wardType}">
-				          <option value="${obj.wardId }">${obj.wardName }</option>
+				          <option value="${obj.wardId }" <c:if test="${cDetails.wardId eq obj.wardId }"> selected</c:if>>${obj.wardName }</option>
 					 </c:forEach>
                 </select>
                 <small class="error">.</small>
@@ -510,7 +532,7 @@ span.required {
                 <select  class="select2 form-select "id="cluster" name="clusterId" required>
                     <option value="">--Select Cluster--</option>
                      <c:forEach var="obj" items="${clusterType}">
-				        <option value="${obj.clusterId}">${obj.clusterName }</option>
+				        <option value="${obj.clusterId}" <c:if test="${cDetails.clusterId eq obj.clusterId }"> selected</c:if>>${obj.clusterName }</option>
 				    </c:forEach>
                 </select>
                 <small class="error">.</small>
@@ -521,7 +543,7 @@ span.required {
                 <select  class="select2 form-select "id="zone" name="zoneId" required>
                     <option value="">--Select Zone--</option>
                     <c:forEach var="obj" items="${zoneType}">
-				        <option value="${obj.zoneId}">${obj.zoneName }</option>
+				        <option value="${obj.zoneId}" <c:if test="${cDetails.zoneId eq obj.zoneId }"> selected</c:if>>${obj.zoneName }</option>
 				    </c:forEach>
                 </select>
                 <small class="error">.</small>
@@ -529,22 +551,95 @@ span.required {
 
             <div class="form-group full-width">
                 <label for="complaintAddress">Complaint Address <span class="required">*</span></label>
-                <input type="text" id="complaintAddress" name="complaintAddress" required>
+                <input type="text" id="complaintAddress" name="complaintAddress" required value ="${cDetails.complaintAddress }">
                 <small class="error">.</small>
             </div>
 
             <div class="form-group full-width">
                 <label for="complaintDesc">Complaint Description <span class="required">*</span></label>
-                <textarea id="complaintDesc" rows="3" name="complaintDescription" required></textarea>
+                <textarea id="complaintDesc" rows="3" name="complaintDescription" required>${cDetails.complaintDescription }</textarea>
                 <small class="error">.</small>
             </div>
+<div class="demo-inline-spacing">
+    <!-- Supervisor -->
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="smsSupervisor" value="smsSupervisor" checked>
+        <label class="form-check-label" for="smsSupervisor">Send SMS to Supervisor</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="mailSupervisor" value="mailSupervisor" checked>
+        <label class="form-check-label" for="mailSupervisor">Send Mail to Supervisor</label>
+    </div>
 
+    <!-- Unit Officer -->
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="smsUnitOfficer" value="smsUnitOfficer" checked>
+        <label class="form-check-label" for="smsUnitOfficer">Send SMS to UnitOfficer</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="mailUnitOfficer" value="mailUnitOfficer" checked>
+        <label class="form-check-label" for="mailUnitOfficer">Send Mail to UnitOfficer</label>
+    </div>
+
+    <!-- Citizen -->
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="smsCitizen" value="smsCitizen" checked>
+        <label class="form-check-label" for="smsCitizen">Send SMS to Citizen</label>
+    </div>
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="mailCitizen" value="mailCitizen" checked>
+        <label class="form-check-label" for="mailCitizen">Send Mail to Citizen</label>
+    </div>
+</div>
+
+		<c:if test="${edit eq 'edit' }">
+		   <div class="form-group">
+            <label class="form-label" for="fp-default">Closing Date </label> 
+            <input type="text"  id="fp-date-time1" class="form-control flatpickr-date-time flatpickr-input" name="closingTime" placeholder="YYYY-MM-DD HH:MM"   readonly="readonly"
+            <c:if test="${cDetails.closingTime ne ''  }"> value ="${cDetails.closingTime }"</c:if> >
+               
+                <small class="error">.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="ComplaintStatusId">Complaint Status <span class="required">*</span></label>
+                <select  class="select2 form-select "id="ComplaintStatusId" name="complaintStatusId" required>
+                   <option value="-- Select Complaint Status --">-- Select Complaint Status --</option>
+					<option value="2" >Pending</option>
+					<option value="4"  selected >Close</option>
+					<option value="6" >Cancel</option>
+                 
+                </select>
+                <small class="error">.</small>
+            </div>
+            
+            
+            <div class="form-group full-width">
+                <label for="Remarks">Remarks <span class="required"></span></label>
+                <textarea id="Remarks" rows="3" name="remarks">${cDetails.remarks }</textarea>
+                <small class="error">.</small>
+            </div>
+		</c:if>
+		
+		
             <div class="form-buttons">
                 <a type="button" class="back"  href="<%=request.getContextPath() %>/compliants" >Back</a>
-                <button type="submit" class="save" >Save</button>
-                <button type="reset" class="reset">Reset</button>
+                
+                 <c:if test="${cDetails.complaintStatusId ne '4' }">
+		                <button type="submit" class="save" >
+		                <c:if test="${edit eq 'edit' }">
+		                Update
+		                </c:if>
+		                <c:if test="${add eq 'add' }">
+		                Save
+		                </c:if>
+		                
+		                </button>
+		                <button type="reset" class="reset">Reset</button>
+                 </c:if>
             </div>
-
+            
+ 			
         </form>
     </div>
   
@@ -799,6 +894,23 @@ function wardfilter(wardId){
             dateFormat: "Y-m-d H:i",
             defaultDate: new Date() // Set current date and time
         });
+    });
+    
+    document.addEventListener("DOMContentLoaded", function () {
+    	if('${cDetails.closingTime }' != ''){
+    		flatpickr("#fp-date-time1", {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                defaultDate: '${cDetails.closingTime }' // Set current date and time
+            });   		
+    	}else{
+    		flatpickr("#fp-date-time1", {
+                enableTime: true,
+                dateFormat: "Y-m-d H:i",
+                defaultDate: new Date() // Set current date and time
+            });
+    	}
+        
     });
     function validateNumber(input) {
         let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters

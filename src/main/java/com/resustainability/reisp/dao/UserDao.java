@@ -2203,7 +2203,7 @@ public class UserDao {
 					+ "      ,c.[CircleId]"
 					+ "      ,b.[WardId],b.ClusterId"
 					+ "      ,b.[ZoneId],b.BinNumbers from [WMSDMSWPROD].[dbo].[BinsLocation] b "
-					+ " left join [WMSDMSWPROD].[dbo].[circle] c on b.ZoneId = c.ZoneId";
+					+ " LEFT OUTER JOIN [WMSDMSWPROD].[dbo].[circle] c on b.ZoneId = c.ZoneId";
 			int arrSize = 0;
 			if(!StringUtils.isEmpty(obj) && !StringUtils.isEmpty(obj.getBinNumbers())) {
 				qry = qry + " and BinNumbers = ? ";
@@ -2224,7 +2224,7 @@ public class UserDao {
 			menuList = jdbcTemplate.query( qry,pValues, new BeanPropertyRowMapper<User>(User.class));
 			Set<String> nameSet = new HashSet<>();
 			menuList = menuList.stream()
-		            .filter(e -> nameSet.add(e.getBinNumbers()))
+		            .filter(e -> nameSet.add(e.getLocationId()))
 		            .collect(Collectors.toList());
 		}catch(Exception e){ 
 			e.printStackTrace();
@@ -2421,6 +2421,101 @@ public class UserDao {
 			throw new SQLException(e.getMessage());
 		}
 		return menuList;
+	}
+
+	public User getCDocumentDEtails(User user) throws Exception {
+		User obj = null;
+		try {
+			String qry = "SELECT complaintId, userId, citizenName, complaintAddress, mobileNo, rt.registrationTypeId,registrationTypeName, transactionNo,   transactionDate, cs.complaintStatusId, "
+					+ "citizenEmailId,   closingTime, z.zoneId,z.ZoneName, cc.circleId,  w.wardId,WardName, c.locationId,LocationName, crt.complaintTypeId, "
+					+ "complaintDescription, binNumber, smsStatus, "
+					+ "c.createdBy, c.modifiedBy, c.createdDate, c.modifiedDate, c.remarks, c.clusterId,clusterName "
+					+ " ,complaintTypeCode,complaintTypeName,complaintStatusCode,complaintStatusName from [WMSDMSWPROD].[dbo].[Complaint] c "
+					+ " left join [WMSDMSWPROD].[dbo].[ComplaintStatus] cs on  c.ComplaintStatusId = cs.ComplaintStatusId "
+					+ " left join[WMSDMSWPROD].[dbo].[ComplaintType] crt on  c.complaintTypeId = crt.complaintTypeId"
+					+ " left join[WMSDMSWPROD].[dbo].[RegistrationType] rt on  c.[RegistrtionTypeId] = rt.registrationTypeId"
+					+ "	left join [WMSDMSWPROD].[dbo].[Ward] w on  c.wardId = w.wardId"
+					+ "	left join [WMSDMSWPROD].[dbo].[Zone] z on  c.ZoneId = z.ZoneId"
+					+ "	left join [WMSDMSWPROD].[dbo].[Circle] cc on  c.circleId = cc.circleId"
+					+ "	left join [WMSDMSWPROD].[dbo].[BinsLocation] l on  c.[LocationId] = l.locationId "
+					+ "	left join [WMSDMSWPROD].[dbo].[Cluster] ccc on  c.clusterId = ccc.clusterId "
+					+ " where ComplaintId is not null  "; 
+			int arrSize = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getComplaintId())) {
+				qry = qry + " and c.ComplaintId = ? ";
+				arrSize++;
+			}
+			Object[] pValues = new Object[arrSize];
+			int i = 0;
+			if(!StringUtils.isEmpty(user) && !StringUtils.isEmpty(user.getComplaintId())) {
+				pValues[i++] = user.getComplaintId();
+			}
+			obj = (User)jdbcTemplate.queryForObject(qry, pValues, new BeanPropertyRowMapper<User>(User.class));
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return obj;
+	}
+
+	public boolean CUpdate(User obj) throws Exception {
+		int count = 0;
+		boolean flag = false;
+		TransactionDefinition def = new DefaultTransactionDefinition();
+		TransactionStatus status = transactionManager.getTransaction(def);
+		try {
+			NamedParameterJdbcTemplate namedParamJdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
+			String updateQry = "UPDATE [WMSDMSWPROD].[dbo].[complaint] "
+	                  + "SET citizenName = :citizenName, "
+	                  + "    complaintAddress = :complaintAddress, "
+	                  + "    mobileNo = :mobileNo, "
+	                  + "    registrtionTypeId = :registrtionTypeId, "
+	                  + "    transactionDate = :transactionDate, "
+	                  + "    complaintStatusId = :complaintStatusId, "
+	                  + "    citizenEmailId = :citizenEmailId, "
+	                  + "    closingTime = :closingTime, "
+	                  + "    zoneId = :zoneId,"
+	                  + "transactionNo = :transactionNo, "
+	                  + "    circleId = :circleId, "
+	                  + "    wardId = :wardId, "
+	                  + "    areaId = :areaId, "
+	                  + "    locationId = :locationId, "
+	                  + "    complaintTypeId = :complaintTypeId, "
+	                  + "    complaintDescription = :complaintDescription, "
+	                  + "    binNumber = :binNumber, "
+	                  + "    others = :others, "
+	                  + "    smsStatus = :smsStatus, "
+	                  + "    modifiedBy = :createdBy, "
+	                  + "    modifiedDate = getdate(), "
+	                  + "    remarks = :remarks, "
+	                  + "    clusterId = :clusterId "
+	                  + "WHERE complaintId = :complaintId;";
+
+				BeanPropertySqlParameterSource paramSource = new BeanPropertySqlParameterSource(obj);		
+
+			    count = namedParamJdbcTemplate.update(updateQry, new BeanPropertySqlParameterSource(obj));
+			
+			if(count > 0 ) {
+		        // Retrieve generated complaintId
+				String insertQry = "INSERT INTO [WMSDMSWPROD].[dbo].[complaintHistory] "
+				 		+ "    (complaintId, remarks, complaintStatusId, createdDate, createdBy,modifiedDate, modifiedBy) "
+				 		+ "VALUES "
+				 		+ "    ( :complaintId, :remarks, :complaintStatusId, :transactionDate, :createdBy,:closingTime,:createdBy);"
+				 		+ ""
+						+ "";
+				paramSource = new BeanPropertySqlParameterSource(obj);		 
+			    count = namedParamJdbcTemplate.update(insertQry, paramSource);
+				
+				flag = true;
+			}
+			transactionManager.commit(status);
+		}catch (Exception e) {
+			transactionManager.rollback(status);
+			e.printStackTrace();
+			throw new Exception(e);
+		}
+		return flag;
 	}
 
 }

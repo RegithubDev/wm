@@ -50,6 +50,7 @@ import com.resustainability.reisp.common.CommonMethods;
 import com.resustainability.reisp.common.DateForUser;
 import com.resustainability.reisp.constants.PageConstants;
 import com.resustainability.reisp.model.User;
+import com.resustainability.reisp.model.User;
 import com.resustainability.reisp.model.Project;
 import com.resustainability.reisp.model.ProjectLocation;
 import com.resustainability.reisp.model.RoleMapping;
@@ -110,8 +111,74 @@ public class LoginController {
 		}
 		return model;
 	}
-	
+	@RequestMapping(value = "/compliant-get", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView cUpdateForm(@ModelAttribute User user, HttpSession session) {
+		ModelAndView model = new ModelAndView(PageConstants.cAdd);
+		List<User> regType = null;
+		List<User> wardType = null;
+		List<User> zoneType = null;
+		List<User> circleType = null;
+		List<User> locType = null;
+		List<User> clusterType = null;
+		try {
+			model.addObject("edit", "edit");
+			user.setComplaintId(user.getComplaintIdGet());
+			regType = service.getRegtypeForUser(user);
+			model.addObject("regType", regType);
+			
+			wardType = service.getWardtypeForUser(user);
+			model.addObject("wardType", wardType);
+			
+			zoneType = service.getZonetypeForUser(user);
+			model.addObject("zoneType", zoneType);
+			
+			circleType = service.getCircletypeForUser(user);
+			model.addObject("comType", circleType);
+			
+			locType = service.getLoctypeForUser(user);
+			model.addObject("locType", locType);
+			
+			clusterType = service.getClusterypeForUser(user);
+			model.addObject("clusterType", clusterType);
+			
+			User cDetails = service.getCDocumentDEtails(user);
+			model.addObject("cDetails", cDetails);
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
 
+	@RequestMapping(value = "/c-update", method = {RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView UserUpdate(@ModelAttribute User obj,RedirectAttributes attributes,HttpSession session) {
+		boolean flag = false;
+		String userId = null;
+		String userName = null;
+		ModelAndView model = new ModelAndView();
+		try {
+			model.setViewName("redirect:/compliants");
+			userId = (String) session.getAttribute("UserId");
+			userName = (String) session.getAttribute("USER_NAME");
+			obj.setUser_id(userId);
+			obj.setUser_name(userName);
+			String email = (String) session.getAttribute("EmailId");
+			obj.setCreatedBy(userId);
+			flag = service.CUpdate(obj);
+			if(flag == true) {
+				attributes.addFlashAttribute("success", "Record Updated Succesfully.");
+			}
+			else {
+				attributes.addFlashAttribute("error"," Updating Record is failed. Try again.");
+			}
+		} catch (Exception e) {
+			attributes.addFlashAttribute("error"," Updating Record is failed. Try again.");
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 	@RequestMapping(value = "/irm-add-c", method = {RequestMethod.POST, RequestMethod.GET})
 	public ModelAndView AddC(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
 		ModelAndView model = new ModelAndView(PageConstants.cAdd);
@@ -122,6 +189,8 @@ public class LoginController {
 		List<User> locType = null;
 		List<User> clusterType = null;
 		try {
+			model.addObject("add", "add");
+			
 			regType = service.getRegtypeForUser(user);
 			model.addObject("regType", regType);
 			
