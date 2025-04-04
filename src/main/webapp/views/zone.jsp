@@ -310,8 +310,8 @@ body {
 								<ol class="breadcrumb">
 									<%--   <li class="breadcrumb-item"><a href="<%=request.getContextPath() %>/home">Home</a>
                     </li>--%>
-									<li class="breadcrumb-item">Call Center</li>
-									<li class="breadcrumb-item active">Complaint Registration</li>
+									<li class="breadcrumb-item">Master</li>
+									<li class="breadcrumb-item active">Zone</li>
 								</ol>
 							</div>
 						</div>
@@ -329,7 +329,7 @@ body {
 								style="box-sizing: border-box; display: table;">
 								<div class="col-lg-3 col-sm-3 col-6"
 									style="padding: 1rem; width: 0rem; display: table-cell;">
-									<div class="col-md-12 mb-1" style="width: 20rem;">
+								<!-- 	<div class="col-md-12 mb-1" style="width: 20rem;">
 										<label class="form-label" for="fp-default">Registration
 											From Date </label> <input type="text" id="fp-default"
 											name="transactionDate"
@@ -338,22 +338,20 @@ body {
 
 									</div>
 									<h2 class="fw-bolder mt-1"></h2>
-								</div>
-								<div class="col-lg-3 col-sm-3 col-6"
+								</div> ---->
+							 	<div class="col-lg-3 col-sm-3 col-6"
 									style="padding: 1rem; display: table-cell;">
-									<div class="col-md-12 mb-1" style="width: 21rem;">
-										<label class="form-label" for="fp-default1">Registration
-											To Date</label> <input type="text" id="fp-default"
-											name="transactionDate"
-											class="form-control flatpickr-basic flatpickr-input active"
-											placeholder="YYYY-MM-DD" readonly="readonly">
-
-									</div>
+									<div class="form-group">
+                <label for="citizenName" class="">Zone code <span class="required">*</span></label>
+                <input type="text" id="citizenName" name="citizenName" required="">
+                <small class="error">.</small>
+            </div>
 									<h2 class="fw-bolder mt-1"></h2>
 								</div>
+								
 
-							</div>
-							<div class="col-lg-6 col-sm-6 col-12"
+							</div> 
+						<!--  	<div class="col-lg-6 col-sm-6 col-12"
 								style="box-sizing: border-box; display: table;">
 								<div class="col-lg-3 col-sm-3 col-6"
 									style="padding: 1rem; display: table-cell;">
@@ -365,18 +363,17 @@ body {
 										</select>
 									</div>
 									<h2 class="fw-bolder mt-1"></h2>
-								</div>
-							<!-- 	<div class="col-lg-3 col-sm-3 col-6"
-									style="padding: 1rem; width: 0rem; display: table-cell;">
-									<div class="col-md-12 mb-1" style="width: 13rem;">
-										<select class="select2 form-select"
-											id="select2-complaintId_filter-container" name="complaintId">
-											<option value="">Registartion Number</option>
-										</select>
-									</div>
+								</div> --->
+											 	<div class="col-lg-3 col-sm-3 col-6"
+									style="padding: 1rem; display: table-cell;">
+									<div class="form-group">
+                <label for="citizenName" class="">Zone Name <span class="required">*</span></label>
+                <input type="text" id="citizenName" name="citizenName" required="">
+                <small class="error">.</small>
+            </div>
 									<h2 class="fw-bolder mt-1"></h2>
-								</div> -->
-								<div class="col-lg-3 col-sm-3 col-6"
+								</div> 
+							<!--  	<div class="col-lg-3 col-sm-3 col-6"
 									style="padding: 1rem; display: table-cell;">
 									<div class="col-md-12 mb-1" style="width: 21rem;">
 										<select class="select2 form-select"
@@ -386,7 +383,7 @@ body {
 										</select>
 									</div>
 									<h2 class="fw-bolder mt-1"></h2>
-								</div>
+								</div> -->
 
 							</div>
 
@@ -440,23 +437,11 @@ body {
 										<thead >
 											<tr style="color : White; background-color : #66962c !important;">
 												<th scope="col">S No</th>
-												<th scope="col">Regt No</th>
-												<th scope="col">Regt Type</th>
-												<th scope="col">Regt Date</th>
-												<th scope="col">Complaint Type</th>
-												<th scope="col">Zone</th>
-												<th scope="col">Cluster</th>
-												<th scope="col">Ward</th>
-												<th scope="col">Location</th>
-												<th scope="col">Complaint Status</th>
-												<th scope="col">Citizen Name</th>
-												<th scope="col">Citizen Contact No</th>
-												<th scope="col">Citizen Email Id</th>
-												<th scope="col">Complaint Address</th>
-												<th scope="col">Complaint Closed Date &amp; Time</th>
-												<th scope="col">History</th>
-												<!-- <th scope="col">Update</th>
-												<th scope="col">Delete</th> -->
+												<th scope="col">Zone Code</th>											
+												<th scope="col">Zone Name</th>
+												<th scope="col">Zonal Officer</th>												
+												<th scope="col">Update</th>
+												<th scope="col">Delete</th>
 												<!-- <th scope="col">Send SMS</th> -->
 											</tr>
 										</thead>

@@ -719,4 +719,85 @@ public class LoginController {
 		}
 		return model;
 	}
+	
+	@RequestMapping(value = "/Masters/Cluster", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersCluster(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.Cluster);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	
+	
+	@RequestMapping(value = "/Masters/Ward", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersWard(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.Ward);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/Masters/GarbageLocation", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersGarbageLocation(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.GarbageLocation);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/Masters/Garbagetype", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersGarbagetype(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.Garbagetype);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/Masters/ComplaintType", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersComplaintType(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.ComplaintType);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
+	@RequestMapping(value = "/Masters/UserRegistration", method = {RequestMethod.POST, RequestMethod.GET})
+	public ModelAndView MastersUserRegistration(@ModelAttribute User user, HttpSession session,HttpServletRequest request) {
+		ModelAndView model = new ModelAndView(PageConstants.UserRegistration);
+		List<User> objsList = null;
+		try {
+			objsList = service.getCentersForUser(user);
+			model.addObject("objsList", objsList);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+	
 }

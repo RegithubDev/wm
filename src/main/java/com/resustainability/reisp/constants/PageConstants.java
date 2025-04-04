@@ -38,5 +38,12 @@ public class PageConstants {
 	public static final String bbdashboard = "bbdashboard";
 
 	public static final String bbsubmitform = "bbsubmitform";
-	public static final String zone = "zone";   
+	public static final String zone = "zone"; 
+	public static final String Cluster = "Cluster";  
+	public static final String Ward = "Ward";  
+	public static final String GarbageLocation = "GarbageLocation";  
+	public static final String Garbagetype = "Garbagetype";  
+	public static final String ComplaintType = "ComplaintType";  
+	public static final String UserRegistration = "UserRegistration";  
+	   
 }
