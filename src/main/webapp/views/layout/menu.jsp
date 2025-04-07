@@ -25,7 +25,7 @@ div.main-menu-content {
 					    data-i18n="Analytics"> <i data-feather="home"></i>
 					      <span data-i18n="Dashboards">Home</span></a>
 			</li>
-			<%-- <li class="dropdown nav-item " data-menu="dropdown" id="masters1"><a
+			<li class="dropdown nav-item " data-menu="dropdown" id="masters1"><a
 				class="dropdown-toggle nav-link d-flex align-items-center" href="#"
 				data-bs-toggle="dropdown"><i data-feather="package"></i><span
 					data-i18n="Masters">Masters</span></a>
@@ -86,7 +86,7 @@ div.main-menu-content {
             <span data-i18n="User Registration">User Registration</span>
         </a>
     </li>
-				</ul></li> --%>
+				</ul></li> 
 			<li class="dropdown nav-item " data-menu="dropdown" id="masters"><a class="dropdown-toggle nav-link d-flex align-items-center" href="#" data-bs-toggle="dropdown"><i data-feather="package"></i><span data-i18n="Masters">Call Center</span></a>
               <ul class="dropdown-menu" data-bs-popper="none">
 					<li class="" data-menu  id="mastersChildComplaintRegistration"  onClick="exFunction('mastersChildComplaintRegistration')">

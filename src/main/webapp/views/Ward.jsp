@@ -323,145 +323,151 @@ body {
 				<section id="dashboard-analytics">
 
 					<div class="row match-height">
-						<div class="col-lg-6 col-sm-6 col-12"
-							style="box-sizing: border-box; display: table;">
-							<div class="col-lg-6 col-sm-6 col-12"
-								style="box-sizing: border-box; display: table;">
-								<div class="col-lg-3 col-sm-3 col-6"
-									style="padding: 1rem; width: 0rem; display: table-cell;">
-								<!-- 	<div class="col-md-12 mb-1" style="width: 20rem;">
-										<label class="form-label" for="fp-default">Registration
-											From Date </label> <input type="text" id="fp-default"
-											name="transactionDate"
-											class="form-control flatpickr-basic flatpickr-input active"
-											placeholder="YYYY-MM-DD" readonly="readonly">
+						<div class="row align-items-end g-2">
 
-									</div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div> ---->
-								
-							</div> 
-							
-					<div class="col-lg-6 col-sm-6 col-12" style="box-sizing: border-box; display: table;" data-select2-id="11">
-								<div class="col-lg-3 col-sm-3 col-6" style="padding: 1rem; display: table-cell;" data-select2-id="10">
-									<div class="col-md-12 mb-1" style="width: 20rem;" data-select2-id="9">
-										<div class="position-relative" data-select2-id="8">
-<div class="form-group">
-                <label for="zone">Zone <span class="required">*</span></label>
-                <select  class="select2 form-select "id="zone" name="zoneId" required>
-                    <option value="">--Select Zone--</option>
-                    <c:forEach var="obj" items="${zoneType}">
-				        <option value="${obj.zoneId}">${obj.zoneName }</option>
-				    </c:forEach>
-                </select>
-                <small class="error">.</small>
-            </div></div>
-									</div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div> 
-								
-								<div class="col-lg-3 col-sm-3 col-6" style="padding: 1rem; display: table-cell;" data-select2-id="10">
-									<div class="col-md-12 mb-1" style="width: 20rem;" data-select2-id="9">
-										<div class="position-relative" data-select2-id="8">
-<div class="form-group">
-                <label for="zone">Circle/unit/cluster <span class="required">*</span></label>
-                <select  class="select2 form-select "id="zone" name="zoneId" required>
-                    <option value="">--Select Circle/unit/cluster--</option>
-                    <c:forEach var="obj" items="${zoneType}">
-				        <option value="${obj.zoneId}">${obj.zoneName }</option>
-				    </c:forEach>
-                </select>
-                <small class="error">.</small>
-            </div></div>
-									</div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div> 
-								
-									<div class="col-lg-3 col-sm-3 col-6" style="padding: 1rem; display: table-cell;">
-									<div class="form-group">
-                <label for="citizenName" class="" style="
-    margin-left: -1rem;
-">Ward Code <span class="required">*</span></label>
-                <input type="text" id="citizenName" name="citizenName" required="" style="
-    width: 16rem;
-    margin-left: -1rem;
-">
-                <small class="error">.</small>
-            </div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div>
-								
-								
-								
-											 	<div class="col-lg-3 col-sm-3 col-6" style="padding: 1rem;display: table-cell;">
-									<div class="form-group" style="
-    margin-left: 35px;
-">
-                <label for="citizenName" class="" style="
-    margin-left: -1rem;
-">Ward Name <span class="required">*</span></label>
-                <input type="text" id="citizenName" name="citizenName" required="" style="
-    width: 16rem;
-    margin-left: -1rem;
-">
-                <small class="error">.</small>
-            </div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div> 
-							<!--  	<div class="col-lg-3 col-sm-3 col-6"
-									style="padding: 1rem; display: table-cell;">
-									<div class="col-md-12 mb-1" style="width: 21rem;">
-										<select class="select2 form-select"
-											id="select2-complaintStatusId_filter-container"
-											name="complaintStatusId">
-											<option value="">Complaint Status</option>
-										</select>
-									</div>
-									<h2 class="fw-bolder mt-1"></h2>
-								</div> -->
+    <!-- Zone Dropdown -->
+    <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="form-group">
+            <label for="zone">Zone <span class="required">*</span></label>
+            <select class="select2 form-select" id="zone" name="zoneId" required>
+                <option value="">--Select Zone--</option>
+                <c:forEach var="obj" items="${zoneType}">
+                    <option value="${obj.zoneId}">${obj.zoneName}</option>
+                </c:forEach>
+            </select>
+        </div>
+    </div>
 
-							</div>
+    <!-- Circle/Unit/Cluster Dropdown -->
+    <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="form-group">
+            <label for="circle">Circle/Unit/Cluster <span class="required">*</span></label>
+            <select class="select2 form-select" id="circle" name="circleId" required>
+                <option value="">--Select Circle--</option>
+                <c:forEach var="obj" items="${zoneType}">
+                    <option value="${obj.zoneId}">${obj.zoneName}</option>
+                </c:forEach>
+            </select>
+        </div>
+    </div>
 
+    <!-- Ward Code -->
+    <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="form-group">
+            <label for="wardCode">Ward Code <span class="required">*</span></label>
+            <input type="text" class="form-control" id="wardCode" name="wardCode" required>
+        </div>
+    </div>
 
-						</div>
-						<div class="col-lg-2 col-sm-2 col-12"
-							style="box-sizing: border-box; display: table;">
-							
-							<div class="col-lg-3 col-sm-3 col-6"
-								style="padding: .5rem; display: table-cell;">
-								<button class="btn btn-primary col-md-12"
-									style="margin-top: 10px; width: 45%; background-color: gainsboro"
-									onclick="getcomplaintTypeIdList();">
-									<i class="fa fa-search" aria-hidden="true"></i>
-								</button>
-								<button class="btn btn-primary col-md-12"
-									style="margin-top: 10px; width: 45%; background-color: gainsboro"
-									onclick="clearFilter();">
-									<i class="fa fa-undo" aria-hidden="true"></i>
-								</button>
-							</div>
-						</div>
-						<div class="col-lg-4 col-sm-4 col-12"
-							style="display: flex; align-items: center;">
-							<div class="col-lg-8 col-sm-6 col-6">
-							 <a type="button" class="btn "  data-bs-toggle="tooltip" data-bs-original-title="Click to Raise an Compliant" href="<%=request.getContextPath() %>/irm-add-c"  style="margin-top: 17px; color: white !important; background-color: orange !important;"><i class="fa fa-add" aria-hidden="true"></i> New</a>
+    <!-- Ward Name -->
+    <div class="col-lg-2 col-md-3 col-sm-6">
+        <div class="form-group">
+            <label for="wardName">Ward Name <span class="required">*</span></label>
+            <input type="text" class="form-control" id="wardName" name="wardName" required>
+        </div>
+    </div>
 
-								<a class="btn col-md-12"
-									style="margin-top: 17px; width: 42%; background-color: #14e014 !important; color: white !important;"
-									onclick="exportcomplaintTypeId();">Export
-									<i class="fa fa-download" aria-hidden="true"></i>
-								</a>
-							</div>
+    <!-- Search & Reset Buttons -->
+    <div class="col-lg-2 col-md-6 col-sm-6 d-flex gap-2">
+        <button class="btn btn-secondary w-50" onclick="getcomplaintTypeIdList();">
+            <i class="fa fa-search"></i>
+        </button>
+        <button class="btn btn-secondary w-50" onclick="clearFilter();">
+            <i class="fa fa-undo"></i>
+        </button>
+    </div>
 
-						</div>
+    <!-- New & Export Buttons -->
+    <div class="col-lg-2 col-md-6 col-sm-6 d-flex gap-2">
+         <button type="button" class="btn btn-outline-primary waves-effect" data-bs-toggle="modal" data-bs-target="#inlineForm">
+             + New
+              </button>
+        <button class="btn btn-success w-50" onclick="exportcomplaintTypeId();">
+            Export <i class="fa fa-download"></i>
+        </button>
+        
+                          <div class="modal fade text-start" id="inlineForm" tabindex="-1" aria-labelledby="myModalLabel33" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel33">New Ward Creation</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="#">
+        <div class="modal-body">
+         
+          <!-- Zone Dropdown -->
+          <label>Zone</label>
+          <span class="required">*</span>
+          <div class="mb-1">
+            <select class="form-control">
+              <option value="">--Select Zone--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <!-- Add more options dynamically as needed -->
+            </select>
+          </div>
+          
+           <!-- Circle/Unit/Cluster Dropdown -->
+          <label>Circle/Unit/Cluster</label>
+          <span class="required">*</span>
+          <div class="mb-1">
+            <select class="form-control">
+              <option value="">--Select Circle/Unit/Cluster--</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <!-- Add more options dynamically as needed -->
+            </select>
+          </div>
+          
+           <!-- Ward Code -->
+          <label>Circle/Unit/Cluster Code <span class="required">*</span></label>
+          <div class="mb-1">
+            <input type="text" placeholder="Enter Ward Code" class="form-control">
+          </div>
 
-					</div>
+          <!-- Ward Name -->
+          <label>Circle/Unit/Cluster Name <span class="required">*</span></label>
+          <div class="mb-1">
+            <input type="text" placeholder="Enter Ward Code" class="form-control">
+          </div>
+          
+          <!-- Ward Supervisor -->
+          <label>Ward Supervisor </label>
+          <span class="required">*</span>
+          <div class="mb-1">
+            <select class="form-control">
+              <option value="">--Select Ward Supervisor --</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <!-- Add more options dynamically as needed -->
+            </select>
+          </div>
+          
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-success">Save</button>
+          <button type="reset" class="btn btn-success">Reset</button>
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Close</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+        
+    </div>
+
+</div>
+
 
 
 					<!-- List DataTable -->
 					<div></div>
-					<div class="row">
-
+					<div class="row" style="
+    margin-top: 1rem;
+">
 						<div class="col-12">
 
 							<div class="card invoice-list-wrapper">
