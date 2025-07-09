@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.resustainability.reisp</groupId>
-  <artifactId>index</artifactId>
+  <artifactId>wm</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
-  <name>index</name>
+  <name>wm</name>
   <url>http://maven.apache.org</url>
   
     <properties>
@@ -14,6 +14,19 @@
 	  <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
    <dependencies>  
+   <dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>9.1.0</version>
+</dependency>
+
+	   <dependency>
+    <groupId>org.reflections</groupId>
+    <artifactId>reflections</artifactId>
+    <version>0.9.12</version>
+</dependency>
+
+
      <dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
@@ -24,8 +37,6 @@
     <artifactId>jackson-databind</artifactId>
     <version>2.13.0</version>
 	</dependency>
-	
-
     <dependency>
      <groupId>com.google.api-client</groupId>
      <artifactId>google-api-client</artifactId>
@@ -42,21 +53,22 @@
 	    <artifactId>javax.servlet-api</artifactId>
 	    <version>3.0.1</version>
 	</dependency>
-	<dependency>
-    <groupId>org.reflections</groupId>
-    <artifactId>reflections</artifactId>
-    <version>0.9.12</version>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-core</artifactId>
+    <version>5.3.30</version> <!-- Match this to your other Spring modules -->
 </dependency>
-    <dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-core</artifactId>
-		<version>${spring.version}</version>
-	</dependency>
+
 	<dependency>
 	    <groupId>com.github.oshi</groupId>
 	    <artifactId>oshi-core</artifactId>
 	    <version>LATEST</version>
 	</dependency>
+	<dependency>
+    <groupId>com.itextpdf</groupId>
+    <artifactId>itextpdf</artifactId>
+    <version>5.5.13.3</version>
+</dependency>
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-web</artifactId>
@@ -247,67 +259,58 @@
 	    <artifactId>gson</artifactId>
 	    <version>2.8.4</version>
 	</dependency>
-<!-- https://mvnrepository.com/artifact/org.springframework.security.extensions/spring-security-saml2-core -->
-
-<dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-web</artifactId>
-    <version>3.0.7.RELEASE</version>
+	  <dependency>
+  <groupId>org.springframework.security.extensions</groupId>
+  <artifactId>spring-security-saml2-core</artifactId>
+  <version>1.0.0.RELEASE</version>
 </dependency>
+
      <dependency>
       <groupId>com.onelogin</groupId>
       <artifactId>java-saml</artifactId>
       <version>2.9.0</version>
   </dependency>
-    <dependency>
-    <groupId>org.springframework.security</groupId>
-    <artifactId>spring-security-core</artifactId>
-    <version>3.0.7.RELEASE</version>
-</dependency>
-  
-   </dependencies>
+    
+  </dependencies>
   <repositories>
-    <repository>
-        <id>spring-milestones</id>
-        <name>Spring Milestones</name>
-        <url>https://repo.spring.io/libs-release</url>
-        <snapshots>
-            <enabled>false</enabled>
-        </snapshots>
-    </repository>
+  <repository>
+    <id>spring-milestones</id>
+    <name>Spring Milestone Repository</name>
+    <url>https://repo.spring.io/milestone</url>
+    <snapshots>
+      <enabled>false</enabled>
+    </snapshots>
+  </repository>
 </repositories>
-<pluginRepositories>
-    <pluginRepository>
-        <id>spring-releases</id>
-        <name>Spring Releases</name>
-        <url>https://repo.spring.io/libs-release</url>
-    </pluginRepository>
-</pluginRepositories>
-  <build>
-   <finalName>index</finalName>
-     <plugins>
-        <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.1</version>
-        <configuration>
-          <release>18</release>
-          	<warName>index</warName>
-                <!-- <outputDirectory>D:\jboss-as-7.1.1.Final\standalone\deployments</outputDirectory> -->
-                <outputDirectory>E:\Development\apache-tomcat-9.0.43\webapps</outputDirectory>
-        </configuration>
-      </plugin>
-        <plugin>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>3.2.3</version>
-      </plugin>
-        <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-resources-plugin</artifactId>
-	        <version>3.1.0</version>
-	        <configuration>
-	          <encoding>UTF-8</encoding>
-	        </configuration>
-	    </plugin>
-    </plugins>
-  </build>
+
+ <build>
+  <finalName>wm</finalName>
+  <plugins>
+    <plugin>
+      <artifactId>maven-compiler-plugin</artifactId>
+      <version>3.8.1</version>
+      <configuration>
+        <release>17</release>
+      </configuration>
+    </plugin>
+
+    <plugin>
+      <artifactId>maven-war-plugin</artifactId>
+      <version>3.2.3</version>
+      <configuration>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
+      </configuration>
+    </plugin>
+
+    <plugin>
+      <groupId>org.apache.maven.plugins</groupId>
+      <artifactId>maven-resources-plugin</artifactId>
+      <version>3.1.0</version>
+      <configuration>
+        <encoding>UTF-8</encoding>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
 </project>
